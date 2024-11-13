@@ -4,6 +4,8 @@
 String pilot = "Prof Kit";
 String copilot = "";
 
+// This is a line made by Kyle!
+
 //spacecraft controls
 boolean viewscreen = true; //powers up main viewscreen
 boolean displays = true; //powers up left and right cockpit displays
