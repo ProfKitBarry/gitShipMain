@@ -23,8 +23,8 @@ class Star {
   }
   
   void display(){
-    float alpha = map(holodeck.GetNoise(x, y), 0, 1, 50, 255);
-    fill(red(holodeck.col), green(holodeck.col), blue(holodeck.col), alpha);
+    float alpha = map(noise(x, y), 0, 1, 50, 255);
+    fill(255, alpha);
     noStroke();
     
     float sx = map(x/z, 0, 1, width/2, width);

@@ -13,9 +13,9 @@ class Planet {
     maxR = radius;
     position = new PVector(x, y);
     tp = 0;
-    r = random(0, 50);
-    g = random(0, 50);
-    b = random(0, 50);
+    r = 90;
+    g = 55;
+    b = 80;
     clouds = random(0.1, 0.7);
     resolution = random(0.01, 0.1);
   }

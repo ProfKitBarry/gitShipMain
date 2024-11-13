@@ -6,12 +6,12 @@ String copilot = "";
 
 //spacecraft controls
 boolean viewscreen = true; //powers up main viewscreen
-boolean displays = false; //powers up left and right cockpit displays
-boolean attitudeControl = false;
-boolean artificialGravity = false;
-boolean sensors = false; //turns on sensors
+boolean displays = true; //powers up left and right cockpit displays
+boolean attitudeControl = true;
+boolean artificialGravity = true;
+boolean sensors = true; //turns on sensors
 boolean parkingBrake = false;
-boolean shields = false; //turns on shields
+boolean shields = true; //turns on shields
 
 boolean redAlert = false; //turns on red alert
 
@@ -19,7 +19,6 @@ boolean redAlert = false; //turns on red alert
 
 //declare all the things
 float speed = 0;
-float drift;
 
 //colours for drawing the spaceship
 color white = color(255);
@@ -43,8 +42,7 @@ boolean showDialogue;
 
 Star[] stars = new Star[400];
 Planet earth;
-Planet moon;
-Holodeck holodeck;
+Person person;
 Checksum healthbar;
 Junk junk;
 
@@ -55,19 +53,8 @@ void setup(){
 }
 
 void keyPressed(){
-  if(!parkingBrake){
-    //toggle warp drive
-    atWarp = !atWarp;
-    //handle new location
-    if(atWarp){
-      speed = 9.99;
-      location = "at warp";
-    }
-    else dropOutOfWarp();
-  }
-  
-  ////toggle viewscreen
-  //showDialogue = !showDialogue;
+  //toggle viewscreen
+  showDialogue = !showDialogue;
 }
 
 void draw(){
@@ -77,27 +64,20 @@ void draw(){
   background(0);
   
   if(viewscreen) {
-    //begin attitude control
-    if(!attitudeControl) beginDrift();
-    
     //starfield simulation
     for(int i = 0; i < stars. length; i++){
      stars[i].update();
      stars[i].display();
     }
     //location
-    if(!atWarp) { 
      earth.update();
      earth.display();
-     moon.update();
-     moon.display();
-    }
-    //holodeck
-    holodeck.update();
-    holodeck.display();
   
-    //end of attitude control
-    if(!attitudeControl) endDrift();
+    //viewscreen
+    if(showDialogue){
+      person.update();
+      person.display();
+    }
   }
   else {
     noSignal();
@@ -128,12 +108,10 @@ void init(){
   for(String item : cargo){
     println(item);
   }
-  //engineering adjustments
-  DeregulateDilithuimColumator();
   //location
   earth = new Planet(2*width/3, height/4, 50);
-  moon = new Planet(2.1*width/3, height/3, 10);
-  holodeck = new Holodeck(holo);
+  //dialogue
+  person = new Person();
   //junk
   junk = new Junk();
   
@@ -142,27 +120,13 @@ void init(){
 
 void dropOutOfWarp(){
   speed = 0.00;
-  float rndX = random(0.25*width, 0.75*width);
-  float rndY = random(0.25*height, 0.5*height);
+  float rndX = 393; // 150 to 450
+  float rndY = 124; // 100, 200
   x = map(rndX, 0.25*width, 0.75*width, 0, 10);
   y = map(rndY, 0.25*height, 0.5*height, 0, 10);
   earth = new Planet(rndX, rndY, random(50, 375));
   earth.sliders();
-  location = "sector " + int(x) + "-" + int(y);
-}
-
-/////////////////////////////////////////////////////
-///////////engineering working party/////////////////
-/////////////////////////////////////////////////////
-void beginDrift(){
-  drift += 0.01;
-  pushMatrix();
-  translate(width/2, height/2);
-  rotate(drift);
-}
-
-void endDrift(){
-  popMatrix();
+  location = "New Toronto VI";
 }
 
 void DeregulateDilithuimColumator(){
@@ -408,15 +372,26 @@ void showCargo(){
     }
     
     // press space
-    // to engage
-    // warp engines
+    // to open
+    // hailing freqs
     
     else {
-      fill(255);  
+      fill(255);
       Font.draw(105, 305, 1, _p, _r, _e, _s, _s, _space, _s, _p, _a, _c, _e);
-      Font.draw(105, 315, 1, _t, _o, _space, _e, _n, _g, _a, _g, _e);
-      Font.draw(105, 325, 1, _w, _a, _r, _p, _space, _e, _n, _g, _i, _n, _e, _s);
+      Font.draw(105, 315, 1, _t, _o, _space, _o, _p, _e, _n, _space, _h, _a, _i, _l, _i, _n, _g);
+      Font.draw(105, 325, 1, _f, _r, _e, _q, _u, _e, _n, _c, _i, _e, _s);
     }
+    
+    //// mouse + click
+    //// to engage
+    //// enemy ship
+    
+    //else {
+    //  fill(255);
+    //  Font.draw(105, 305, 1, _m, _o, _u, _s, _e, _space, _a, _n, _d, _space, _c, _l, _i, _c, _k);
+    //  Font.draw(105, 315, 1, _t, _o, _space, _f, _i, _r, _e, _space, _p, _h, _a, _s, _e, _r, _s);
+    //  Font.draw(105, 325, 1, _a, _t, _space, _e, _n, _e, _m, _y, _space, _s, _h, _i, _p);
+    //}
     
     } 
 }
