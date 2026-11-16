@@ -5,7 +5,7 @@ String pilot = "Russell";
 String copilot = "";
 
 //spacecraft controls
-boolean viewscreen = true; //powers up main viewscreen
+boolean viewscreen = false; //powers up main viewscreen
 boolean displays = true; //powers up left and right cockpit displays
 boolean attitudeControl = true;
 boolean artificialGravity = true;
