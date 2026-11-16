@@ -5,15 +5,15 @@ String pilot = "Russell";
 String copilot = "";
 
 //spacecraft controls
-boolean viewscreen = false; //powers up main viewscreen
+boolean viewscreen = true; //powers up main viewscreen
 boolean displays = false; //powers up left and right cockpit displays
 boolean attitudeControl = true;
-boolean artificialGravity = false;
+boolean artificialGravity = true;
 boolean sensors = true; //turns on sensors
-boolean parkingBrake = true;
+boolean parkingBrake = false;
 boolean shields = true; //turns on shields
 
-boolean redAlert = true; //turns on red alert
+boolean redAlert = false; //turns on red alert
 
 // End of variables to mess with in Basic Training
 
