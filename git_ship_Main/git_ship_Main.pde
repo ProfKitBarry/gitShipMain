@@ -7,11 +7,19 @@ String copilot = "";
 //spacecraft controls
 boolean viewscreen = true; //powers up main viewscreen
 boolean displays = false; //powers up left and right cockpit displays
+<<<<<<< HEAD
 boolean attitudeControl = true;
 boolean artificialGravity = true;
 boolean sensors = true; //turns on sensors
 boolean parkingBrake = false;
 boolean shields = true; //turns on shields
+=======
+boolean attitudeControl = false;
+boolean artificialGravity = true;
+boolean sensors = true; //turns on sensors
+boolean parkingBrake = true;
+boolean shields = false; //turns on shields
+>>>>>>> 87689ea9e9c682bd80986d817f4e9d49d445ea01
 
 boolean redAlert = false; //turns on red alert
 
@@ -25,7 +33,11 @@ float drift;
 color white = color(255);
 color grey = color(100);
 color black = color(0);
+<<<<<<< HEAD
 color holo = color(255, 255, 0);
+=======
+color holo = color(0, 255, 255);
+>>>>>>> 87689ea9e9c682bd80986d817f4e9d49d445ea01
 
 //slider values: 0, 10 values set in code
 float slider1 = 0;
