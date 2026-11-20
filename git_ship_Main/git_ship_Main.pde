@@ -1,6 +1,6 @@
 // Here's where we'll put all the variables to mess with
 
-//crew roster
+//crew rosterwasd
 String pilot = "Prof Kit";
 String copilot = "";
 
